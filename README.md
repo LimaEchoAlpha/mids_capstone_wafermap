@@ -2,6 +2,8 @@
 
 ### MIDS Capstone Project (Spring 2022)
 
+[Final Presentation Slides](https://github.com/LimaEchoAlpha/mids_capstone_wafermap/blob/main/wafermap_final_presentation.pdf)
+
 The aim of the project is to develop a neural network model to identify wafers with single defect patterns and classify them into different defect groups with 90% accuracy.  We used the [WM-811K dataset](https://www.kaggle.com/datasets/qingyi/wm811k-wafer-map), the largest open source dataset from a real-world production process.  This dataset contains pass/fail wafer bin maps from electrical probing after manufacturing, which can be treated as a grayscale image classification problem.
 
 We [explored various model architectures](https://github.com/LimaEchoAlpha/mids_capstone_wafermap/tree/main/modeling) before selecting a final model that improves upon a tandem convolutional neural network published by [Yu, et al.](https://ieeexplore.ieee.org/document/8815875)  We simplified their detection and classification tandem model into a one-step classification model and used a different method for pre-processing to achieve better performance on both our held-out test set (+0.45%) and a previously unseen dataset (+7.09%).
