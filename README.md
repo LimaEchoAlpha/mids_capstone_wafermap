@@ -30,6 +30,10 @@ We [trained the model](https://github.com/LimaEchoAlpha/mids_capstone_wafermap/b
 
 **Our model achieved an overall accuracy of 97.56%**, an improvement of 0.45% over our implementation of the paper tandem model.
 
+| ![comparison](images/cm_comparison.png) |
+|:--:|
+| <b>Comparison of results of the Yu paper model vs the final model</b>|
+
 ### Understanding the model
 
 #### What does the model see?
