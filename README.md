@@ -28,7 +28,7 @@ The model is a 13-layer CNN with three convolutional groups, pooling layers, and
 
 We [trained the model](https://github.com/LimaEchoAlpha/mids_capstone_wafermap/blob/main/1-final_model_training.ipynb) with the labeled subset of the WM-811K dataset. We used a stratified sampling method to divide the labeled data into train, dev, and test sets to preserve the inherent defect distribution in each set. The model was trained using the train and dev sets for 30 epochs, and results are reported using the held-out test set.
 
-**Our model achieved an overall accuracy of 97.56%**, an improvement of 0.45% over our implementation of the paper tandem model.
+**Our model achieved an overall accuracy of 97.56%**, an improvement of 0.45% over our implementation of the paper tandem model.  In particular, the one-step model improves on the identification of scratch defects.
 
 | ![comparison](images/cm_comparison.png) |
 |:--:|
