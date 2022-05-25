@@ -1,6 +1,6 @@
-# Automated Wafer Defect Classifier
+## Automated Wafer Defect Classifier
 
-## MIDS Capstone Project (Spring 2022)
+### MIDS Capstone Project (Spring 2022)
 
 The aim of the project is to develop a neural network model to identify wafers with single defect patterns and classify them into different defect groups with 90% accuracy.  We used the [WM-811K dataset](https://www.kaggle.com/datasets/qingyi/wm811k-wafer-map), the largest open source dataset from a real-world production process.  This dataset contains pass/fail wafer bin maps from electrical probing after manufacturing, which can be treated as a grayscale image classification problem.
 
