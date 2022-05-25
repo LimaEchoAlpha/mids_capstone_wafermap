@@ -1,12 +1,12 @@
-## Automated Wafer Defect Classifier
+# Automated Wafer Defect Classifier
 
-### MIDS Capstone Project (Spring 2022)
+## MIDS Capstone Project (Spring 2022)
 
 The aim of the project is to develop a neural network model to identify wafers with single defect patterns and classify them into different defect groups with 90% accuracy.  We used the [WM-811K dataset](https://www.kaggle.com/datasets/qingyi/wm811k-wafer-map), the largest open source dataset from a real-world production process.  This dataset contains pass/fail wafer bin maps from electrical probing after manufacturing, which can be treated as a grayscale image classification problem.
 
 We [explored various model architectures](https://github.com/LimaEchoAlpha/mids_capstone_wafermap/tree/main/modeling) before selecting a final model that improves upon a tandem convolutional neural network published by [Yu, et al.](https://ieeexplore.ieee.org/document/8815875)  We simplified their detection and classification tandem model into a one-step classification model and used a different method for pre-processing to achieve better performance on both our held-out test set (+0.45%) and a previously unseen dataset (+7.09%).
 
-#### Data Pre-processing
+### Data Pre-processing
 
 The paper employs a 7x7 median filter, a method widely used for removing salt and pepper noise while also preserving edges. However, we found that the median filter can wash out slight scratches, affecting the model's performance in classifying scratch defects. We employed two passes of [morphological thinning](https://homepages.inf.ed.ac.uk/rbf/HIPR2/thin.htm) instead, which preserves connected pixels better than median filtering.
 
@@ -14,7 +14,7 @@ The paper employs a 7x7 median filter, a method widely used for removing salt an
 |:--:|
 | <b>Comparison of pre-processing performance on Yu paper tandem model</b>|
 
-#### Model Architecture
+### Model Architecture
 
 We used the classification model from the Yu, et al paper to classify all 9 defect patterns, including nones.
 
@@ -28,15 +28,16 @@ We [trained the model](https://github.com/LimaEchoAlpha/mids_capstone_wafermap/b
 
 **Our model achieved an overall accuracy of 97.56%**, an improvement of 0.45% over our implementation of the paper tandem model.
 
-#### Understanding the model
+### Understanding the model
 
-##### What does the model see?
+#### What does the model see?
 
 We visualized our model's last convolutional layer before classification using [Grad-CAM](https://github.com/LimaEchoAlpha/mids_capstone_wafermap/blob/main/3-model_layer_visualization.ipynb) to understand what our model sees. Here we get confirmation that our model is able to identify the defect patterns clearly.
 
 | ![grad cam](images/grad_cam.png) |
+|:--:|
 
-##### How well does the model generalize?
+#### How well does the model generalize?
 
 To see how well our model would generalize, we [tested it on a secondary dataset](https://github.com/LimaEchoAlpha/mids_capstone_wafermap/blob/main/2-final_model_inference.ipynb). We did not use this dataset in training because it is mostly synthetic data generated from a GAN. It has an unrealistically balanced distribution between all defect classes and is much more homogenous within each class than the WM-811K dataset we used for training.
 
@@ -45,5 +46,6 @@ Testing with the second dataset, our model achieved a **marked improvement of 7.
 Error analysis showed that our model is misclassifying three main classes. When we visualize examples of these mislabeled wafers, we can see how the model would make these errors. Our model seems to be stumbling over a systematic labeling issue.
 
 | ![mis-classified](images/misclassified.png) |
+|:--:|
 
 Since these mislabeled classes have similar defect mechanisms, we recalculated our results to see how our model would have performed if these classes were combined. **Our recalculated accuracy comes out to 90.62%**. This gives us confidence in how well our model can generalize.
